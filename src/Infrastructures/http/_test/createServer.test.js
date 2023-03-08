@@ -15,18 +15,20 @@ describe('HTTP server', () => {
     await AuthenticationsTableTestHelper.cleanTable();
   });
 
-  describe('when quest unregistered route', async () => {
-    // Arrange
-    const server = await createServer({});
+  describe('when quest unregistered route', () => {
+    it('should response 404 when request unregistered route', async () => {
+      // Arrange
+      const server = await createServer({});
 
-    // Action
-    const response = await server.inject({
-      method: 'GET',
-      url: '/unregisteredRoute',
+      // Action
+      const response = await server.inject({
+        method: 'GET',
+        url: '/unregisteredRoute',
+      });
+
+      // Assert
+      expect(response.statusCode).toEqual(404);
     });
-
-    // Assert
-    expect(response.statusCode).toEqual(404);
   });
 
   describe('when POST /users', () => {
