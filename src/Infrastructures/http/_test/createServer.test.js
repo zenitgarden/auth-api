@@ -15,7 +15,7 @@ describe('HTTP server', () => {
     await AuthenticationsTableTestHelper.cleanTable();
   });
 
-  it('should response 404 when request unregistered route', async () => {
+  describe('when quest unregistered route', async () => {
     // Arrange
     const server = await createServer({});
 
